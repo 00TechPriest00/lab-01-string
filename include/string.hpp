@@ -17,7 +17,6 @@
 #include <vector>
 #include <cstddef>
 
-
 using namespace std;
 
 void error(char* strErr);

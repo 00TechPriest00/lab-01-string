@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "stdafx.h"
+#include ".\stdafx.h"
 #include <stdlib.h>
 #include <iostream>
-#include <string.h> 
+#include <string.h>
 #include <math.h>
 #include <utility>
 #include <cstdlib>
@@ -11,7 +11,6 @@
 #include <string>
 #include <vector>
 #include <cstddef>
-#include <iostream>
 #include "..\include\string.hpp"
 using namespace std;
 
@@ -41,7 +40,6 @@ void test1()
     }
     cout << newStr << endl;
     delete[] newStr;
-
 }
 
 void error(char* strErr)
@@ -60,8 +58,7 @@ void test3()
     if (a.Size() == len)
     {
         cout << "Пользовательский конструктор работает" << endl;
-    }
-    else
+    }else
     {
         error("Пользовательский конструктор не работет");
     }
@@ -69,8 +66,7 @@ void test3()
     if (b.Size() == len)
     {
         cout << "Конструктор копирования работает" << endl;
-    }
-    else
+    }else
     {
         error("Конструктор копирования не работет");
     }
@@ -78,8 +74,7 @@ void test3()
     if (c.Size() == 0)
     {
         cout << "Конструктор по умолчанию работает" << endl;
-    }
-    else
+    }else
     {
         cout << "Конструктор по умолчанию не работает" << endl;
     }
@@ -94,8 +89,7 @@ void test4()
     if (a.Size() == b.Size())
     {
         cout << "Перегрузка оператора = работает" << endl;
-    }
-    else
+    }else
     {
         error("Перегрузка оператора = не работает");
     }
@@ -111,8 +105,7 @@ void test5()
     if (a.Size() == 14)
     {
         cout << "Оператор += работает1" << endl;
-    }
-    else
+    }else
     {
         error("Оператор += не работает");
     }
@@ -143,7 +136,7 @@ void test7()
     char* str2 = "aab";
     String a(str1);
     String b(str2);
-    if (a<b)
+    if (a < b)
     {
         cout << "Оператор < работает" << endl;
     }

@@ -1,0 +1,4 @@
+C:/Users/Robinzon/Documents/Чики-Брики/lab-01-string/CMakeFiles/tests.dir
+C:/Users/Robinzon/Documents/Чики-Брики/lab-01-string/CMakeFiles/RUN_TESTS.dir
+C:/Users/Robinzon/Documents/Чики-Брики/lab-01-string/CMakeFiles/ALL_BUILD.dir
+C:/Users/Robinzon/Documents/Чики-Брики/lab-01-string/CMakeFiles/ZERO_CHECK.dir

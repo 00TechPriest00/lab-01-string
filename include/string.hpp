@@ -14,63 +14,63 @@ char* strConct(char *str1, char *str2, char *newStr);
 class String {
 public:
     /// Деструктор
-	~String();
+    ~String();
 
     /// Конструктор по умолчанию
-	String();
+    String();
     
     /// Конструктор копирования
     /// <param name="rhs">Объект, который копируем </param>
-	String(const String& rhs);
+    String(const String& rhs);
 
     /// Пользовательский конструктор
     /// <param name="data">Данные, которые требуется поместить в создаваемый
     /// объект </param>
-	String(const char* data);
+    String(const char* data);
 
     /// Оператор присваивания
     /// <param name="data">Объект, который копируем </param>
     /// <returns>Возвращаем ссылку на себя</returns>
-	String& operator=(const String& rhs);
+    String& operator=(const String& rhs);
 
     /// Оператор +=
     /// <param name="rhs">Объект, который стоит после знака '+=' </param>
     /// <returns>Возвращаем ссылку на себя</returns>
-	String& operator+=(const String& rhs);
+    String& operator+=(const String& rhs);
 
-	String& operator+=(const char* s);
+    String& operator+=(const char* s);
 
     /// Оператор *=
     /// <returns>Возвращаем ссылку на себя</returns>
-	String& operator*=(unsigned int m);
+    String& operator*=(unsigned int m);
 
     /// Оператор ==
     /// <param name="rhs">Объект, который стоит после знака '==' </param>
     /// <returns>Возвращаем значения равенства двух строк</returns>
-	bool operator==(const String& rhs) const;
+    bool operator==(const String& rhs) const;
 
     /// Оператор &lt;
     /// <param name="rhs">Объект, который стоит после знака "&lt;" </param>
     /// <returns>Возвращаем значения сравнения двух строк</returns>
-	bool operator<(const String& rhs) const;
+    bool operator<(const String& rhs) const;
 
     /// Функция поиска подстроки
     /// <param name="substr">Подстрока, которую необходимо найти </param>
     /// <returns>Возвращаем позицию substr. Если подстрока не найдена, то
     /// возвратить -1</returns>
-	size_t Find(const String& substr) const;
+    size_t Find(const String& substr) const;
 
     /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
     /// <param name="oldSymbol">Символ, который требуется заменить </param>
     /// <param name="newSymbol">Символ, на который требуется заменить </param>
-	void Replace(char oldSymbol, char newSymbol);
+    void Replace(char oldSymbol, char newSymbol);
 
     /// Функция возвращает длину строки
     /// <returns>Возвращаем длину строки</returns>
-	size_t Size() const;
+    size_t Size() const;
 
     /// Функция для определения пуста ли строка
-	bool Empty() const;
+    bool Empty() const;
     
     /// Оператор []
     /// <example>
@@ -81,7 +81,7 @@ public:
     /// </example>
     /// <param name="index"> Индекс символа </param>
     /// <returns> Значение символа в строке с индексом index</returns>
-	char operator[](size_t index) const;
+    char operator[](size_t index) const;
 
     /// Оператор []
     /// <example>
@@ -92,7 +92,7 @@ public:
     /// </example>
     /// <param name="index"> Индекс символа </param>
     /// <returns> Ссылка на символ в строке с индексом index</returns>
-	char& operator[](size_t index);
+    char& operator[](size_t index);
     /// Смотри пример
     /// <example>
     /// <code>
@@ -101,20 +101,20 @@ public:
     /// </code>
     /// </example>
     /// <param name="symbol"> Значение символов, которе отрезаем </param>
-	void RTrim(char symbol);
+    void RTrim(char symbol);
 
-	/// Смотри пример
-	/// <example>
-	/// <code>
-	/// String str = "___some string___";
-	/// str.LTrim('_'); // теперь переменная str равна "some string___"
-	/// </code>
-	/// </example>
-	/// <param name="symbol"> Значение символов, которе отрезаем </param>
-	void LTrim(char symbol);
+    /// Смотри пример
+    /// <example>
+    /// <code>
+    /// String str = "___some string___";
+    /// str.LTrim('_'); // теперь переменная str равна "some string___"
+    /// </code>
+    /// </example>
+    /// <param name="symbol"> Значение символов, которе отрезаем </param>
+    void LTrim(char symbol);
 
 
-	void swap(String& oth);
+    void swap(String& oth);
 
     friend std::ostream& operator<<(std::ostream& out, const String& str);
 

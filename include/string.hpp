@@ -103,6 +103,17 @@ public:
     /// <param name="symbol"> Значение символов, которе отрезаем </param>
 	void RTrim(char symbol);
 
+	/// Смотри пример
+	/// <example>
+	/// <code>
+	/// String str = "___some string___";
+	/// str.LTrim('_'); // теперь переменная str равна "some string___"
+	/// </code>
+	/// </example>
+	/// <param name="symbol"> Значение символов, которе отрезаем </param>
+	void LTrim(char symbol);
+
+
 	void swap(String& oth);
 
     friend std::ostream& operator<<(std::ostream& out, const String& str);

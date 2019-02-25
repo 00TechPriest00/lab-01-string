@@ -146,6 +146,9 @@ String& String::operator*=(unsigned int m)
 				newMData[i + j] = m_Data[j];
 			}
 		}
+		delete[] m_Data;
+
+		m_Data = newMData;
 		return *this;
 	}
 
@@ -302,14 +305,38 @@ void String::RTrim(char symbol)
 		}
 	}
 
+void String::LTrim(char symbol)
+{
+	int n = 0;
+	int size = this->Size();
+	for (int i = 0; i < size; i++)
+	{
+		if (m_Data[i] == symbol)
+		{
+			n++;
+		}
+		else
+		{
+			break;
+		}
+	}
+	if (n != 0)
+	{
+		char* newMData = new char[size - n + 1];
+		strCpy(m_Data + n, newMData);
+		delete[] m_Data;
+		m_Data = newMData;
+	}
+}
 void String::swap(String& oth)
 	{
 		int size1 = oth.Size();
 		int size2 = this->Size();
-		char* newMData = new char[size2];
+		char* newMData = new char[size2>size1 ? size2 : size1 +1];
 		strCpy(this->m_Data, newMData);
 		strCpy(oth.m_Data, m_Data);
 		strCpy(newMData, oth.m_Data);
+		delete[] newMData;
 	}
 
 
@@ -338,7 +365,9 @@ String operator + (const String& a, const String& b)
 			newMData[i] = b[i];
 		}
 	}
-	return newMData;
+	String result(newMData);
+	delete [] newMData;
+	return result;
 }
 /// Оператор +
 /// <example>
@@ -361,7 +390,9 @@ String operator*(const String& a, unsigned int b)
 		}
 	}
 	newMData[i] = '\0';
-	return newMData;
+	String result(newMData);
+	delete[] newMData;
+	return result;
 }
 
 /// Оператор !=

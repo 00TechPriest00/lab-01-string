@@ -3,7 +3,7 @@
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
 
-#include "stdafx.h"
+#include "..\include\stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>

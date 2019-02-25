@@ -3,11 +3,11 @@
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
 
-#include <stdio.h>
 #include "stdafx.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <string.h> 
+#include <string.h>
 #include <math.h>
 #include <utility>
 #include <cstdlib>
@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 #include <cstddef>
-#include <iostream>
+
 
 using namespace std;
 

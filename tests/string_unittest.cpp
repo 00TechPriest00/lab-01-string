@@ -94,9 +94,9 @@ TEST(String, Trim) {
 TEST(String, Find) {
   String s1("some string");
 
-  EXPECT_EQ(4, s1.Find(" "));
-  EXPECT_EQ(5, s1.Find("str"));
-  EXPECT_EQ(0, s1.Find("some"));
+  EXPECT_EQ(4, s1.Find(String(" ")));
+  EXPECT_EQ(5, s1.Find(String("str")));
+  EXPECT_EQ(0, s1.Find(String("some")));
   
   EXPECT_EQ(9, String{"str stri string"}.Find(String{"string"}));
   EXPECT_EQ(6, String{"strinsstring"}.Find(String{"string"}));

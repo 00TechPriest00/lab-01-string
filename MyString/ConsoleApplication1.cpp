@@ -58,10 +58,10 @@ void test3()
     if (a.Size() == len)
     {
         cout << "ѕользовательский конструктор работает" << endl;
-    }else
-    {
+    }else{
         error("ѕользовательский конструктор не работет");
     }
+    
     String b(a);
     if (b.Size() == len)
     {

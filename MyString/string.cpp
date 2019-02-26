@@ -434,7 +434,7 @@ std::ostream& operator<<(std::ostream& out, const String& str)
 
 bool operator==(const char*s, const String& d)
 {
-    if (s != d)
+    if (String(s) != d)
     {
         return false;
     }

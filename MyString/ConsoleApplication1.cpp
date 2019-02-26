@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include <stdio.h>
-#include ".\stdafx.h"
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
@@ -143,8 +143,8 @@ void test7()
     {
         error("Оператор < не работает");
     }
-    a = "aa";
-    b = "a";
+    a = String("aa");
+    b = String("a");
     if (b < a)
     {
         cout << "Оператор < работает" << endl;
@@ -177,7 +177,7 @@ void test9()
     char* str1 = "New technologies";
     char* str2 = "nologi";
     String a(str1);
-    if (a.Find(str2) == 8)
+    if (a.Find(String(str2)) == 8)
     {
         cout << "Оператор Find работает" << endl;
     }
@@ -251,7 +251,7 @@ void test14()
     String a("aaa");
     String b("bbb");
     a.swap(b);
-    if ((a == "bbb") && (b == "aaa"))
+    if ((a == String("bbb")) && (b == String("aaa")))
     {
         cout << ("Перестановка работает");
     }
@@ -280,7 +280,7 @@ void test16()
 {
     String a("aaa");
     String b("bbb");
-    if ((a + b) == "aaabbb")
+    if ((a + b) == String("aaabbb"))
     {
         cout << "Оператор + работает";
     }

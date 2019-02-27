@@ -214,6 +214,7 @@ size_t String::Find(const String& substr) const
                 }
             }
         }
+		return -1;
     }
 
     /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.

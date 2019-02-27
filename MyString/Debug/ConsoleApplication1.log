@@ -1,37 +1,15 @@
-﻿Build started 26.02.2019 21:57:30.
+﻿Build started 27.02.2019 23:29:44.
      1>Project "C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\ConsoleApplication1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\visual studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ConsoleApplication1.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ConsoleApplication1.cpp
-         ConsoleApplication1.cpp
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(1): warning C4627: '#include ".\stdafx.h"': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(3): warning C4627: '#include <stdlib.h>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(4): warning C4627: '#include <iostream>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(5): warning C4627: '#include <string.h>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(6): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(7): warning C4627: '#include <utility>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(8): warning C4627: '#include <cstdlib>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(9): warning C4627: '#include <iomanip>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(10): warning C4627: '#include <fstream>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(11): warning C4627: '#include <string>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(12): warning C4627: '#include <vector>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(13): warning C4627: '#include <cstddef>': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(14): warning C4627: '#include "..\include\string.hpp"': skipped when looking for precompiled header use
-                 Add directive to 'stdafx.h' or rebuild precompiled header
-     1>c:\users\dan\documents\github\lab-01-string\mystring\consoleapplication1.cpp(387): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
-     1>Done Building Project "C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\ConsoleApplication1.vcxproj" (Build target(s)) -- FAILED.
+         C:\visual studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ConsoleApplication1.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt string.cpp
+         string.cpp
+       Link:
+         C:\visual studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\Debug\ConsoleApplication1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\Debug\ConsoleApplication1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\Debug\ConsoleApplication1.lib" /MACHINE:X86 Debug\ConsoleApplication1.obj
+         Debug\stdafx.obj
+         Debug\string.obj
+         ConsoleApplication1.vcxproj -> C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\Debug\ConsoleApplication1.exe
+     1>Done Building Project "C:\Users\Dan\Documents\GitHub\lab-01-string\MyString\ConsoleApplication1.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.20
+Time Elapsed 00:00:01.35

@@ -16,8 +16,6 @@
 
 using namespace std;
 
-
-
 int strLen(char *str)
 {
     int count = 0;

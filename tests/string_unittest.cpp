@@ -22,7 +22,7 @@ TEST(String, ConstructAssign) {
   EXPECT_EQ("some String", s2);
   EXPECT_EQ(String("some string"), String(data));
 }
-/*
+
 TEST(String, GetByIndex) {
   const char* data = "some string";
 
@@ -125,4 +125,3 @@ TEST(String, Swap) {
   EXPECT_EQ("other string", s0);
   EXPECT_EQ("some string", s1);
 }
-*/

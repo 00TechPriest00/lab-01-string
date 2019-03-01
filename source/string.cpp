@@ -1,4 +1,4 @@
-﻿// Copyright 2018 Fedorov G <your_email>
+// Copyright 2018 Fedorov G <your_email>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -321,7 +321,7 @@ void String::swap(String& oth)
     {
         int size1 = oth.Size();
         int size2 = this->Size();
-        char* newMData = new char[size2>size1 ? size2 : size1 +1];
+        char* newMData = new char[size2 > size1 ? size2 : size1 +1];
         strCpy(this->m_Data, newMData);
         strCpy(oth.m_Data, m_Data);
         strCpy(newMData, oth.m_Data);
@@ -330,8 +330,8 @@ void String::swap(String& oth)
 
 
 /// Оператор +
-/// <example> 
-/// <code> 
+/// <example>
+/// <code>
 /// String a = "Hello";
 /// String b = "World";
 /// String c = a + b; // c равна "HelloWorld"

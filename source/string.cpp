@@ -1,5 +1,5 @@
 // Copyright 2018 Fedorov G <your_email>
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>

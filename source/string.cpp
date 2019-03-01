@@ -90,9 +90,8 @@ String::String(const String& rhs)
     /// объект </param>
 String::String(const char* data)
     {
-		int len = strLen(const_cast<char*>(data));
-        m_Data = new char[len + 1];
-		strCpy(const_cast<char*>(data), m_Data);
+        int len = strLen(const_cast<char*>(data));
+        m_Data = new char[len + 1];        strCpy(const_cast<char*>(data), m_Data);
         m_Data[len] = 0;
     }
     /// Оператор присваивания
@@ -121,11 +120,9 @@ String& String::operator+=(const String& rhs)
     }
 
 String& String::operator+=(const char* s)
-    {
-		int size = strLen(const_cast<char*>(s));
+    {        int size = strLen(const_cast<char*>(s));
         char* newMData = new char[this->Size() + size + 1];
-        strCpy(m_Data, newMData);
-		strCpy(const_cast<char*>(s), newMData + this->Size());
+        strCpy(m_Data, newMData);        strCpy(const_cast<char*>(s), newMData + this->Size());
         delete[] m_Data;
         m_Data = newMData;
         return *this;

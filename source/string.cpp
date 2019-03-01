@@ -145,6 +145,7 @@ String& String::operator*=(unsigned int m)
                 newMData[i + j] = m_Data[j];
             }
         }
+		newMData[b] = 0;
         delete[] m_Data;
 
         m_Data = newMData;
@@ -362,7 +363,7 @@ String operator + (const String& a, const String& b)
         }
         else
         {
-            newMData[i] = b[i];
+            newMData[i] = b[i-size1];
         }
     }
     String result(newMData);

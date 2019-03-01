@@ -1,4 +1,5 @@
 // Copyright 2018 Fedorov G <your_email>
+
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
 

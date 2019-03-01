@@ -1,5 +1,4 @@
 // Copyright 2018 Fedorov G <your_email>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>

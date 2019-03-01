@@ -28,10 +28,10 @@ hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 # TODO: change template word to project name and delete this comment
-#add_library(MyString STATIC
+add_library(MyString STATIC
   # enum your files and delete this comment
-#  ${CMAKE_CURRENT_SOURCE_DIR}/MyString
-#)
+  ${CMAKE_CURRENT_SOURCE_DIR}/source/string.cpp
+)
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/string_unittest.cpp

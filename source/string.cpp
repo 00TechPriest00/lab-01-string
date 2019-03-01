@@ -41,10 +41,10 @@ void strCpy(char *str, char *dest)
 
 char* strConct(char *str1, char *str2, char *newStr)
 {
-    int i = 0;
+    //int i = 0;
     int len1 = strLen(str1);
     int len2 = strLen(str2);
-    int n = 0;
+    //int n = 0;
 
     int superCount = len1 + len2 + 1;
     strCpy(str1, newStr);
@@ -293,7 +293,7 @@ void String::RTrim(char symbol)
         int size = this->Size() - 1;
         for (int i = size; i > 0; i--)
         {
-            bool flag = true;
+            //bool flag = true;
             if (m_Data[i] == symbol)
             {
                 m_Data[i] = '\0';

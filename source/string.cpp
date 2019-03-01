@@ -90,9 +90,9 @@ String::String(const String& rhs)
     /// объект </param>
 String::String(const char* data)
     {
-        int len = strLen((char*)data);
+		int len = strLen(const_cast<char*>(data));
         m_Data = new char[len + 1];
-        strCpy((char*)data, m_Data);
+		strCpy(const_cast<char*>(data), m_Data);
         m_Data[len] = 0;
     }
     /// Оператор присваивания
@@ -122,10 +122,10 @@ String& String::operator+=(const String& rhs)
 
 String& String::operator+=(const char* s)
     {
-        int size = strLen((char*)s);
+		int size = strLen(const_cast<char*>(s));
         char* newMData = new char[this->Size() + size + 1];
         strCpy(m_Data, newMData);
-        strCpy((char*)s, newMData + this->Size());
+		strCpy(const_cast<char*>(s), newMData + this->Size());
         delete[] m_Data;
         m_Data = newMData;
         return *this;
@@ -145,7 +145,7 @@ String& String::operator*=(unsigned int m)
                 newMData[i + j] = m_Data[j];
             }
         }
-		newMData[b] = 0;
+        newMData[b] = 0;
         delete[] m_Data;
 
         m_Data = newMData;
@@ -215,7 +215,7 @@ size_t String::Find(const String& substr) const
                 }
             }
         }
-		return -1;
+        return -1;
     }
 
     /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
@@ -243,12 +243,9 @@ size_t String::Size() const
     /// Функция для определения пуста ли строка
 bool String::Empty() const
     {
-        if (Size() == 0)
-        {
+        if (Size() == 0){
             return true;
-        }
-        else
-        {
+        }else{
             return false;
         }
     }
@@ -295,12 +292,9 @@ void String::RTrim(char symbol)
         for (int i = size; i > 0; i--)
         {
             //bool flag = true;
-            if (m_Data[i] == symbol)
-            {
+            if (m_Data[i] == symbol){
                 m_Data[i] = '\0';
-            }
-            else
-            {
+            }else{
                 break;
             }
         }
@@ -312,12 +306,9 @@ void String::LTrim(char symbol)
     int size = this->Size();
     for (int i = 0; i < size; i++)
     {
-        if (m_Data[i] == symbol)
-        {
+        if (m_Data[i] == symbol){
             n++;
-        }
-        else
-        {
+        }else{
             break;
         }
     }
@@ -342,8 +333,8 @@ void String::swap(String& oth)
 
 
 /// Оператор +
-/// <example>
-/// <code>
+/// <example> 
+/// <code> 
 /// String a = "Hello";
 /// String b = "World";
 /// String c = a + b; // c равна "HelloWorld"
@@ -357,12 +348,9 @@ String operator + (const String& a, const String& b)
     char* newMData = new char[size1 + size2 + 1];
     for (int i = 0; i < (size1 + size2 + 1); i++)
     {
-        if (i < size1)
-        {
+        if (i < size1){
             newMData[i] = a[i];
-        }
-        else
-        {
+        }else{
             newMData[i] = b[i-size1];
         }
     }
@@ -399,12 +387,9 @@ String operator*(const String& a, unsigned int b)
 /// Оператор !=
 bool operator!=(const String& a, const String& b)
 {
-    if (a == b)
-    {
+    if (a == b){
         return false;
-    }
-    else
-    {
+    }else{
         return true;
     }
 }
@@ -435,12 +420,9 @@ std::ostream& operator<<(std::ostream& out, const String& str)
 
 bool operator==(const char*s, const String& d)
 {
-    if (String(s) != d)
-    {
+    if (String(s) != d){
         return false;
-    }
-    else
-    {
+    }else{
         return true;
     }
 }

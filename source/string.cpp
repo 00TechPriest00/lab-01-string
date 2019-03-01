@@ -1,4 +1,4 @@
-// Copyright 2018 Fedorov G <your_email>
+п»ї// Copyright 2018 Fedorov G <your_email>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -68,15 +68,15 @@ String::~String()
         delete[] m_Data;
     }
 
-    /// Конструктор по умолчанию
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 String::String()
     {
         m_Data = new char[1];
         m_Data[0] = '\0';
     }
 
-    /// Конструктор копирования
-    /// <param name="rhs">Объект, который копируем </param>
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    /// <param name="rhs">РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ РєРѕРїРёСЂСѓРµРј </param>
 String::String(const String& rhs)
     {
         int len = strLen(rhs.m_Data);
@@ -85,9 +85,9 @@ String::String(const String& rhs)
         m_Data[len] = 0;
     }
 
-    /// Пользовательский конструктор
-    /// <param name="data">Данные, которые требуется поместить в создаваемый
-    /// объект </param>
+    /// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    /// <param name="data">Р”Р°РЅРЅС‹Рµ, РєРѕС‚РѕСЂС‹Рµ С‚СЂРµР±СѓРµС‚СЃСЏ РїРѕРјРµСЃС‚РёС‚СЊ РІ СЃРѕР·РґР°РІР°РµРјС‹Р№
+    /// РѕР±СЉРµРєС‚ </param>
 String::String(const char* data)
     {
 		int len = strLen(const_cast<char*>(data));
@@ -95,9 +95,9 @@ String::String(const char* data)
 		strCpy(const_cast<char*>(data), m_Data);
         m_Data[len] = 0;
     }
-    /// Оператор присваивания
-    /// <param name="data">Объект, который копируем </param>
-    /// <returns>Возвращаем ссылку на себя</returns>
+    /// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    /// <param name="data">РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ РєРѕРїРёСЂСѓРµРј </param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° СЃРµР±СЏ</returns>
 String& String::operator=(const String& rhs)
     {
         int len = rhs.Size();
@@ -107,9 +107,9 @@ String& String::operator=(const String& rhs)
         return *this;
     }
 
-    /// Оператор +=
-    /// <param name="rhs">Объект, который стоит после знака '+=' </param>
-    /// <returns>Возвращаем ссылку на себя</returns>
+    /// РћРїРµСЂР°С‚РѕСЂ +=
+    /// <param name="rhs">РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ СЃС‚РѕРёС‚ РїРѕСЃР»Рµ Р·РЅР°РєР° '+=' </param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° СЃРµР±СЏ</returns>
 String& String::operator+=(const String& rhs)
     {
         char* newMData = new char[this->Size() + rhs.Size() + 1];
@@ -131,8 +131,8 @@ String& String::operator+=(const char* s)
         return *this;
     }
 
-    /// Оператор *=
-    /// <returns>Возвращаем ссылку на себя</returns>
+    /// РћРїРµСЂР°С‚РѕСЂ *=
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° СЃРµР±СЏ</returns>
 String& String::operator*=(unsigned int m)
     {
         int a = this->Size();
@@ -152,9 +152,9 @@ String& String::operator*=(unsigned int m)
         return *this;
     }
 
-    /// Оператор ==
-    /// <param name="rhs">Объект, который стоит после знака '==' </param>
-    /// <returns>Возвращаем значения равенства двух строк</returns>
+    /// РћРїРµСЂР°С‚РѕСЂ ==
+    /// <param name="rhs">РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ СЃС‚РѕРёС‚ РїРѕСЃР»Рµ Р·РЅР°РєР° '==' </param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј Р·РЅР°С‡РµРЅРёСЏ СЂР°РІРµРЅСЃС‚РІР° РґРІСѓС… СЃС‚СЂРѕРє</returns>
 bool String::operator==(const String& rhs) const
     {
         int a = this->Size();
@@ -173,9 +173,9 @@ bool String::operator==(const String& rhs) const
         return true;
     }
 
-    /// Оператор &lt;
-    /// <param name="rhs">Объект, который стоит после знака "&lt;" </param>
-    /// <returns>Возвращаем значения сравнения двух строк</returns>
+    /// РћРїРµСЂР°С‚РѕСЂ &lt;
+    /// <param name="rhs">РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ СЃС‚РѕРёС‚ РїРѕСЃР»Рµ Р·РЅР°РєР° "&lt;" </param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј Р·РЅР°С‡РµРЅРёСЏ СЃСЂР°РІРЅРµРЅРёСЏ РґРІСѓС… СЃС‚СЂРѕРє</returns>
 bool String::operator<(const String& rhs) const
     {
         int minLen = (rhs.Size() < this->Size()) ? rhs.Size() : this->Size();
@@ -189,10 +189,10 @@ bool String::operator<(const String& rhs) const
         return this->Size() < rhs.Size();
     }
 
-    /// Функция поиска подстроки
-    /// <param name="substr">Подстрока, которую необходимо найти </param>
-    /// <returns>Возвращаем позицию substr. Если подстрока не найдена, то
-    /// возвратить -1</returns>
+    /// Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РїРѕРґСЃС‚СЂРѕРєРё
+    /// <param name="substr">РџРѕРґСЃС‚СЂРѕРєР°, РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°Р№С‚Рё </param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј РїРѕР·РёС†РёСЋ substr. Р•СЃР»Рё РїРѕРґСЃС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР°, С‚Рѕ
+    /// РІРѕР·РІСЂР°С‚РёС‚СЊ -1</returns>
 size_t String::Find(const String& substr) const
     {
         int a = substr.Size();
@@ -218,9 +218,9 @@ size_t String::Find(const String& substr) const
         return -1;
     }
 
-    /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
-    /// <param name="oldSymbol">Символ, который требуется заменить </param>
-    /// <param name="newSymbol">Символ, на который требуется заменить </param>
+    /// Р¤СѓРЅРєС†РёСЏ Р·Р°РјРµРЅС‹ СЃРёРјРІРѕР»РѕРІ, Р·Р°РјРµРЅСЏРµС‚ РІСЃРµ СЃРёРјРІРѕР»С‹ oldSymbol РЅР° newSymbol.
+    /// <param name="oldSymbol">РЎРёРјРІРѕР», РєРѕС‚РѕСЂС‹Р№ С‚СЂРµР±СѓРµС‚СЃСЏ Р·Р°РјРµРЅРёС‚СЊ </param>
+    /// <param name="newSymbol">РЎРёРјРІРѕР», РЅР° РєРѕС‚РѕСЂС‹Р№ С‚СЂРµР±СѓРµС‚СЃСЏ Р·Р°РјРµРЅРёС‚СЊ </param>
 void String::Replace(char oldSymbol, char newSymbol)
     {
         int size = this->Size();
@@ -233,14 +233,14 @@ void String::Replace(char oldSymbol, char newSymbol)
         }
     }
 
-    /// Функция возвращает длину строки
-    /// <returns>Возвращаем длину строки</returns>
+    /// Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РґР»РёРЅСѓ СЃС‚СЂРѕРєРё
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј РґР»РёРЅСѓ СЃС‚СЂРѕРєРё</returns>
 size_t String::Size() const
     {
         return strLen(m_Data);
     }
 
-    /// Функция для определения пуста ли строка
+    /// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСѓСЃС‚Р° Р»Рё СЃС‚СЂРѕРєР°
 bool String::Empty() const
     {
         if (Size() == 0){
@@ -250,42 +250,42 @@ bool String::Empty() const
         }
     }
 
-    /// Оператор []
+    /// РћРїРµСЂР°С‚РѕСЂ []
     /// <example>
     /// <code>
     /// String str = "some string";
     /// char symbol = str[2]; // symbol == 'm'
     /// </code>
     /// </example>
-    /// <param name="index"> Индекс символа </param>
-    /// <returns> Значение символа в строке с индексом index</returns>
+    /// <param name="index"> РРЅРґРµРєСЃ СЃРёРјРІРѕР»Р° </param>
+    /// <returns> Р—РЅР°С‡РµРЅРёРµ СЃРёРјРІРѕР»Р° РІ СЃС‚СЂРѕРєРµ СЃ РёРЅРґРµРєСЃРѕРј index</returns>
 char String::operator[](size_t index) const
     {
         return m_Data[index];
     }
 
-    /// Оператор []
+    /// РћРїРµСЂР°С‚РѕСЂ []
     /// <example>
     /// <code>
     /// String str = "some string";
-    /// str[0] = 'S'; // теперь переменная str равна "Some string"
+    /// str[0] = 'S'; // С‚РµРїРµСЂСЊ РїРµСЂРµРјРµРЅРЅР°СЏ str СЂР°РІРЅР° "Some string"
     /// </code>
     /// </example>
-    /// <param name="index"> Индекс символа </param>
-    /// <returns> Ссылка на символ в строке с индексом index</returns>
+    /// <param name="index"> РРЅРґРµРєСЃ СЃРёРјРІРѕР»Р° </param>
+    /// <returns> РЎСЃС‹Р»РєР° РЅР° СЃРёРјРІРѕР» РІ СЃС‚СЂРѕРєРµ СЃ РёРЅРґРµРєСЃРѕРј index</returns>
 char& String::operator[](size_t index)
     {
         return m_Data[index];
     }
 
-    /// Смотри пример
+    /// РЎРјРѕС‚СЂРё РїСЂРёРјРµСЂ
     /// <example>
     /// <code>
     /// String str = "___some string___";
-    /// str.RTrim('_'); // теперь переменная str равна "___some string"
+    /// str.RTrim('_'); // С‚РµРїРµСЂСЊ РїРµСЂРµРјРµРЅРЅР°СЏ str СЂР°РІРЅР° "___some string"
     /// </code>
     /// </example>
-    /// <param name="symbol"> Значение символов, которе отрезаем </param>
+    /// <param name="symbol"> Р—РЅР°С‡РµРЅРёРµ СЃРёРјРІРѕР»РѕРІ, РєРѕС‚РѕСЂРµ РѕС‚СЂРµР·Р°РµРј </param>
 void String::RTrim(char symbol)
     {
         int size = this->Size() - 1;
@@ -332,15 +332,15 @@ void String::swap(String& oth)
     }
 
 
-/// Оператор +
+/// РћРїРµСЂР°С‚РѕСЂ +
 /// <example> 
 /// <code> 
 /// String a = "Hello";
 /// String b = "World";
-/// String c = a + b; // c равна "HelloWorld"
+/// String c = a + b; // c СЂР°РІРЅР° "HelloWorld"
 /// </code>
 /// </example>
-/// <returns>Возвращаем строку равную a + b</returns>
+/// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј СЃС‚СЂРѕРєСѓ СЂР°РІРЅСѓСЋ a + b</returns>
 String operator + (const String& a, const String& b)
 {
     int size1 = a.Size();
@@ -358,11 +358,11 @@ String operator + (const String& a, const String& b)
     delete [] newMData;
     return result;
 }
-/// Оператор +
+/// РћРїРµСЂР°С‚РѕСЂ +
 /// <example>
 /// <code>
 /// String a = "A";
-/// String c = a * 5; // c равна "AAAAA"
+/// String c = a * 5; // c СЂР°РІРЅР° "AAAAA"
 /// </code>
 /// </example>
 String operator*(const String& a, unsigned int b)
@@ -384,7 +384,7 @@ String operator*(const String& a, unsigned int b)
     return result;
 }
 
-/// Оператор !=
+/// РћРїРµСЂР°С‚РѕСЂ !=
 bool operator!=(const String& a, const String& b)
 {
     if (a == b){
@@ -394,7 +394,7 @@ bool operator!=(const String& a, const String& b)
     }
 }
 
-/// Оператор &gt;
+/// РћРїРµСЂР°С‚РѕСЂ &gt;
 bool operator>(const String& a, const String& b)
 {
     int minLen = (b.Size() < a.Size()) ? b.Size() : a.Size();
@@ -408,10 +408,10 @@ bool operator>(const String& a, const String& b)
     return a.Size() < b.Size();
 }
 
-/// Оператор вывода
-/// <param name="out">Поток куда выводим строку </param>
-/// <param name="str">Строка, которую выводим </param>
-/// <returns>Возвращаем ссылку на поток</returns>
+/// РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°
+/// <param name="out">РџРѕС‚РѕРє РєСѓРґР° РІС‹РІРѕРґРёРј СЃС‚СЂРѕРєСѓ </param>
+/// <param name="str">РЎС‚СЂРѕРєР°, РєРѕС‚РѕСЂСѓСЋ РІС‹РІРѕРґРёРј </param>
+/// <returns>Р’РѕР·РІСЂР°С‰Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° РїРѕС‚РѕРє</returns>
 std::ostream& operator<<(std::ostream& out, const String& str)
 {
     out << str.m_Data;

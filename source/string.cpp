@@ -387,7 +387,7 @@ String operator*(const String& a, unsigned int b)
     {
         for (int j = 0; j < size1; j++)
         {
-            newMData[i] = a[j];
+            newMData[i+j] = a[j];
         }
     }
     newMData[i] = '\0';

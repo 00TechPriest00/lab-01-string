@@ -136,7 +136,7 @@ String& String::operator+=(const char* s)
 String& String::operator*=(unsigned int m)
     {
         int a = this->Size();
-        int b = (this->Size())*m;
+        int b = (this->Size())*(m+1);
         char* newMData = new char[b + 1];
         for (int i = 0; i < b; i = i + a)
         {

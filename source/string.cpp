@@ -2,245 +2,215 @@
 //#ifndef INCLUDE_STRING_HPP_
 //#define INCLUDE_STRING_HPP_
 #include "../include/string.hpp"
-#include "string.hpp"
-
+bool operator==(const char* first, const String& second) {
+	size_t a = second.Size();
+	for (size_t i = 0; i < a; i++) {
+		if (second[i] != first[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+void String::strMyCpy(const char* str, char* dest) {
+	size_t i = 0;
+	while (str[i] != '\0') {
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+size_t String::strMyLen(const char* str) {
+	size_t count = 0;
+	size_t i = 0;
+	while (str[i] != '\0') {
+		count++;
+		i++;
+	}
+	return count;
+}
+size_t String::strMyLen(char* str) {
+	size_t count = 0;
+	size_t i = 0;
+	while (str[i] != '\0') {
+		count++;
+		i++;
+	}
+	return count;
+}
+String::~String() { delete[] Data; }
 String::String() {
-    Data = new char[1]();
-    Data[0] = '\0';
+	Data = new char[1];
+	Data[0] = '\0';
 }
-
-String::~String() {
-    delete[] Data;
-}
-
 String::String(const String& rhs) {
-    size_t n = std::strlen(rhs.Data);
-    Data = new char[n + 1]();
-    for (size_t i = 0; i < n; i++) {
-        Data[i] = rhs.Data[i];
-    }
-    Data[n] = '\0';
+	size_t len = strMyLen(rhs.Data);
+	Data = new char[len + 1];
+	strMyCpy(rhs.Data, Data);
+	Data[len] = 0;
 }
-
 String::String(const char* data) {
-    size_t  n = std::strlen(data);
-    Data = new char [n+1]();
-    for (size_t i = 0; i < n; i++) {
-        Data[i] = data[i];
-    }
-    Data[n] = '\0';
+	size_t len = strMyLen(data);
+	Data = new char[len + 1];
+	strMyCpy(data, Data);
 }
-
 String& String::operator=(const String& rhs) {
-    if (*this == rhs) {
-        return *this;
-    }
-    if (Data) {
-        delete[] Data;
-    }
-    size_t  n = std::strlen(rhs.Data);
-    Data = new char[n + 1]();
-    for (size_t i = 0; i < n; i++) {
-        Data[i] = rhs.Data[i];
-    }
-    Data[n] = '\0';
-    return *this;
+	size_t len = rhs.Size();
+	delete[] Data;
+	Data = new char[len + 1];
+	Data[len] = 0;
+	strMyCpy(rhs.Data, Data);
+	return *this;
 }
-
 String& String::operator+=(const String& rhs) {
-    size_t n1 = std::strlen(Data);
-    size_t n2 = std::strlen(rhs.Data);
-    char* mem = new char[n1+n2+1]();
-    for (size_t i = 0; i < n1; i++) {
-        mem[i] = Data[i];
-    }
-    for (size_t i = n1; i < n1+n2; i++) {
-        mem[i] = rhs.Data[i-n1];
-    }
-    mem[n1 + n2] = '\0';
-    delete[] Data;
-    Data = new char[n1 + n2 + 1];
-    for (size_t i = 0; i < n1 + n2; i++) {
-      Data[i] = mem[i];
-    }
-    Data[n1 + n2] = '\0';
-    delete[] mem;
-    return *this;
-}
+	char* result = new char[Size() + rhs.Size() + 1];
+	std::memcpy(result, Data, Size());
+	std::memcpy(result + Size(), rhs.Data, rhs.Size());
+	result[Size() + rhs.Size()] = '\0';
+	delete[] Data;
 
-String& String::operator*=(unsigned int m){
-    size_t n = std::strlen(Data);
-    auto mem = new char[n*m + 1]();
-    for (size_t i = 0; i < n*m; i++) {
-       mem[i] = Data[i%n];
-    }
-    delete[] Data;
-    Data = new char[n*m+1];
-    for (size_t i = 0; i < n*m; i++) {
-        Data[i] = mem[i];
-    }
-    Data[n*m] = '\0';
-    delete[] mem;
-    return *this;
-}
+	const size_t lengh = std::strlen(result) + 1;
+	Data = new char[lengh];
+	memcpy(Data, result, lengh);
+	delete[] result;
 
-String operator+(const String& a, const String& b) {
-    String prom(a);
-    prom += b;
-    return prom;
+	return *this;
 }
-
-String operator*(const String& a, unsigned int b) {
-    String prom(a);
-    prom *= b;
-    return prom;
+String& String::operator*=(size_t m) {
+	{
+		size_t x = this->Size();
+		size_t y = (this->Size()) * m;
+		char* newData = new char[y + 1];
+		for (size_t i = 0; i < y; i = i + x) {
+			for (size_t j = 0; j < x; j++) {
+				newData[i + j] = Data[j];
+			}
+		}
+		delete[] newData;
+		return *this;
+	}
 }
-
 bool String::operator==(const String& rhs) const {
-    size_t n1 = std::strlen(Data);
-    size_t n2 = std::strlen(rhs.Data);
-    if (n1 != n2) {
-        return 0;
-    } else {
-        for (size_t i = 0; i < n1; i++) {
-            if (Data[i] != rhs.Data[i]) {
-                return 0;
-            }
-        }
-    }
-    return 1;
+	size_t a = this->Size();
+	size_t flag = 1;
+	for (size_t i = 0; i < a; i++) {
+		if (Data[i] != rhs.Data[i]) {
+			flag = 0;
+		}
+		if (flag == 0) {
+			return false;
+		}
+	}
+	return true;
 }
-
 bool String::operator<(const String& rhs) const {
-    size_t n1 = std::strlen(Data);
-    size_t n2 = std::strlen(rhs.Data);
-    if (n1 > n2) {
-        n1 = n2;
-    }
-    for (size_t i = 0; i < n1; i++) {
-        if (Data[i] > rhs.Data[i]) {
-            return 0;
-        }
-    }
-    return 1;
+	size_t minLen = (rhs.Size() < this->Size()) ? rhs.Size() : this->Size();
+	for (size_t i = 0; i < minLen; i++) {
+		if (Data[i] < rhs.Data[i]) {
+			return true;
+		}
+	}
+	return this->Size() < rhs.Size();
 }
-
-bool operator!=(const String& a, const String& b){
-    return a == b ? 0 : 1;
-}
-
-bool operator==(const char* data, const String& rhs) {
-    size_t n1 = std::strlen(data);
-    size_t n2 = rhs.Size();
-    if (n1 != n2) {
-      return 0;
-    } else {
-        for (size_t i = 0; i < n1; i++){
-            if (data[i] != rhs[i]) {
-                return 0;
-            }
-        }
-    }
-    return 1;
-}
-
-bool operator>(const String& a, const String& b){
-    return b < a ? 0 : 1;
-}
-
 size_t String::Find(const String& substr) const {
-    size_t n1 = std::strlen(Data);
-    size_t n2 = std::strlen(substr.Data);
-    if (n1 < n2) {
-        return static_cast<size_t>(-1);
-    }
-    size_t k = 0;
-    for (size_t i = 0; i < n1 - n2; i++) {
-        for (size_t j = 0; j < n2; j++) {
-            if (Data[i + j] == (substr.Data[j])) k++;
-        }
-        if (k == n2) {
-            return i;
-        } else {
-            k = 0;
-        }
-    }
-    return static_cast<size_t>(-1);
+	size_t a = substr.Size();
+	size_t b = this->Size();
+	for (size_t i = 0; i < b; i++) {
+		if (substr.Data[0] == Data[i]) {
+			size_t j = 0;
+			for (; j < a; j++) {
+				if (substr.Data[j] != Data[i + j]) {
+					break;
+				}
+			}
+			if (j == a) {
+				return i;
+			}
+		}
+	}
+	return -1;
 }
-
 void String::Replace(char oldSymbol, char newSymbol) {
-    size_t n1 = std::strlen(Data);
-    for (size_t i = 0; i < n1; i++) {
-        if (Data[i] == oldSymbol) {
-            Data[i] = newSymbol;
-        }
-    }
+	size_t size = this->Size();
+	for (size_t i = 0; i < size; i++) {
+		if (Data[i] == oldSymbol) {
+			Data[i] = newSymbol;
+		}
+	}
 }
-
-size_t String::Size() const {
-    return std::strlen(Data);
-}
-
+size_t String::Size() const { return strlen(Data); }
 bool String::Empty() const {
-    return (std::strlen(Data) != 0) ? 0 : 1;
+	if (this->Size() == 0) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
-
+char String::operator[](size_t index) const { return Data[index]; }
+char& String::operator[](size_t index) { return Data[index]; }
 void String::RTrim(char symbol) {
-    size_t n1 = std::strlen(Data);
-    n1--;
-    while (Data[n1] == symbol) {
-        n1--;
-    }
-    n1++;
-    auto mem = new char[n1 + 1]();
-    for (size_t i = 0; i < n1; i++) {
-        mem[i] = Data[i];
-    }
-    mem[n1] = '\0';
-    delete[] Data;
-    Data = new char[n1 + 1];
-    for (size_t i = 0; i < n1; i++) {
-        Data[i] = mem[i];
-    }
-    Data[n1] = '\0';
-    delete[] mem;
-}
+	size_t pos = Size() - 1;
+	for (; pos > 0; pos--) {
+		if (Data[pos] != symbol) {
+			break;
+		}
+	}
 
+	char* result = new char[pos + 1];
+	memcpy(result, Data, pos + 1);
+
+	delete[] Data;
+	Data = new char[pos + 2];
+	memcpy(Data, result, pos + 1);
+	Data[pos + 1] = '\0';
+	delete[] result;
+}
 void String::LTrim(char symbol) {
-    size_t n1 = std::strlen(Data);
-    size_t k = 0;
-    while (Data[k] == symbol) {
-        k++;
-    }
-    auto mem = new char[n1 - k + 1]();
-    for (size_t i = k; i < n1; i++) {
-        mem[i - k] = Data[i];
-    }
-    mem[n1 - k] = '\0';
-    delete[] Data;
-    Data = new char[n1 - k + 1];
-    for (size_t i = 0; i < n1 - k; i++) {
-        Data[i] = mem[i];
-    }
-    Data[n1 - k] = '\0';
-    delete[] mem;
-}
+	size_t pos = 0;
+	for (; pos < Size(); pos++) {
+		if (Data[pos] != symbol) {
+			break;
+		}
+	}
 
-void String::swap(String& oth) {
-    auto p = *this;
-    *this = oth;
-    oth = p;
-}
+	const size_t lengh = Size() - pos;
+	char* result = new char[lengh];
+	memcpy(result, Data + pos, lengh);
 
-char String::operator[](size_t index) const {
-    return Data[index];
+	delete[] Data;
+	Data = new char[lengh + 1];
+	memcpy(Data, result, lengh);
+	Data[lengh] = '\0';
+	delete[] result;
 }
-
-char& String::operator[](size_t index) {
-    return Data[index];
+void String::swap(String& oth) { std::swap(Data, oth.Data); }
+String operator+(const String& a, const String& b) {
+	String prom(a);
+	prom += b;
+	return prom;
 }
-
-std::ostream& operator<<(std::ostream& out, const String& str){
-    out << str.Data;
-    return out;
+String operator*(const String& a, size_t b) {
+	String prom(a);
+	prom *= b;
+	return prom;
+}
+bool operator!=(const String& a, const String& b) {
+	if (a.Size() != b.Size()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool operator>(const String& a, const String& b) {
+	if (a.Size() > b.Size()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+std::ostream& operator<<(std::ostream& out, const String& str) {
+	out << str.Data;
+	return out;
 }

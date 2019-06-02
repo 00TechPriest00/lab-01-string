@@ -1,4 +1,4 @@
-// Copyright 2019 Volkov <snek20000@yandex.ru>
+// Copyright 2019 Fedorov Georgy <james.sayfer2015@yandex.ru>
 #include <gtest/gtest.h>
 #include <sstream>
 #include <string.hpp>

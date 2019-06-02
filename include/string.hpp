@@ -1,124 +1,120 @@
-// Copyright 2018 Fedorov G <your_email>
+// Copyright 2019 Fedorov Georgy <james.sayfer2015@yandex.ru>
+
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
 
 #include <cstddef>
 #include <iostream>
-
-void error(char* strErr);
-int strLen(char *str1);
-void strCpy(char *str, char *dest);
-char* strConct(char *str1, char *str2, char *newStr);
+#include <utility>
+#include <cstring>
 
 class String {
-public:
-    /// Деструктор
-    ~String();
+ public:
+  /// Деструктор
+  ~String();
 
-    /// Конструктор по умолчанию
-    String();
+  /// Конструктор по умолчанию
+  String();
 
-    /// Конструктор копирования
-    /// <param name="rhs">Объект, который копируем </param>
-    String(const String& rhs);
+  /// Конструктор копирования
+  /// <param name="rhs">Объект, который копируем </param>
+  String(const String& rhs);
 
-    /// Пользовательский конструктор
-    /// <param name="data">Данные, которые требуется поместить в создаваемый
-    /// объект </param>
-    explicit String(const char* data);
+  /// Пользовательский конструктор
+  /// <param name="data">Данные, которые требуется поместить в создаваемый
+  /// объект </param>
+  explicit String(const char* data);
 
-    /// Оператор присваивания
-    /// <param name="data">Объект, который копируем </param>
-    /// <returns>Возвращаем ссылку на себя</returns>
-    String& operator=(const String& rhs);
+  /// Оператор присваивания
+  /// <param name="data">Объект, который копируем </param>
+  /// <returns>Возвращаем ссылку на себя</returns>
+  String& operator=(const String& rhs);
 
-    /// Оператор +=
-    /// <param name="rhs">Объект, который стоит после знака '+=' </param>
-    /// <returns>Возвращаем ссылку на себя</returns>
-    String& operator+=(const String& rhs);
+  /// Оператор +=
+  /// <param name="rhs">Объект, который стоит после знака '+=' </param>
+  /// <returns>Возвращаем ссылку на себя</returns>
+  String& operator+=(const String& rhs);
 
-    String& operator+=(const char* s);
+  /// Оператор *=
+  /// <returns>Возвращаем ссылку на себя</returns>
+  String& operator*=(unsigned int m);
 
-    /// Оператор *=
-    /// <returns>Возвращаем ссылку на себя</returns>
-    String& operator*=(unsigned int m);
+  /// Оператор ==
+  /// <param name="rhs">Объект, который стоит после знака '==' </param>
+  /// <returns>Возвращаем значения равенства двух строк</returns>
+  bool operator==(const String& rhs) const;
 
-    /// Оператор ==
-    /// <param name="rhs">Объект, который стоит после знака '==' </param>
-    /// <returns>Возвращаем значения равенства двух строк</returns>
-    bool operator==(const String& rhs) const;
+  /// Оператор &lt;
+  /// <param name="rhs">Объект, который стоит после знака "&lt;" </param>
+  /// <returns>Возвращаем значения сравнения двух строк</returns>
+  bool operator<(const String& rhs) const;
 
-    /// Оператор &lt;
-    /// <param name="rhs">Объект, который стоит после знака "&lt;" </param>
-    /// <returns>Возвращаем значения сравнения двух строк</returns>
-    bool operator<(const String& rhs) const;
+  /// Функция поиска подстроки
+  /// <param name="substr">Подстрока, которую необходимо найти </param>
+  /// <returns>Возвращаем позицию substr. Если подстрока не найдена, то
+  /// возвратить -1</returns>
+  size_t Find(const String& substr) const;
 
-    /// Функция поиска подстроки
-    /// <param name="substr">Подстрока, которую необходимо найти </param>
-    /// <returns>Возвращаем позицию substr. Если подстрока не найдена, то
-    /// возвратить -1</returns>
-    size_t Find(const String& substr) const;
+  /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
+  /// <param name="oldSymbol">Символ, который требуется заменить </param>
+  /// <param name="newSymbol">Символ, на который требуется заменить </param>
+  void Replace(char oldSymbol, char newSymbol);
 
-    /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
-    /// <param name="oldSymbol">Символ, который требуется заменить </param>
-    /// <param name="newSymbol">Символ, на который требуется заменить </param>
-    void Replace(char oldSymbol, char newSymbol);
+  /// Функция возвращает длину строки
+  /// <returns>Возвращаем длину строки</returns>
+  size_t Size() const;
 
-    /// Функция возвращает длину строки
-    /// <returns>Возвращаем длину строки</returns>
-    size_t Size() const;
+  /// Функция для определения пуста ли строка
+  bool Empty() const;
 
-    /// Функция для определения пуста ли строка
-    bool Empty() const;
+  /// Оператор []
+  /// <example>
+  /// <code>
+  /// String str = "some string";
+  /// char symbol = str[2]; // symbol == 'm'
+  /// </code>
+  /// </example>
+  /// <param name="index"> Индекс символа </param>
+  /// <returns> Значение символа в строке с индексом index</returns>
+  char operator[](size_t index) const;
 
-    /// Оператор []
-    /// <example>
-    /// <code>
-    /// String str = "some string";
-    /// char symbol = str[2]; // symbol == 'm'
-    /// </code>
-    /// </example>
-    /// <param name="index"> Индекс символа </param>
-    /// <returns> Значение символа в строке с индексом index</returns>
-    char operator[](size_t index) const;
+  /// Оператор []
+  /// <example>
+  /// <code>
+  /// String str = "some string";
+  /// str[0] = 'S'; // теперь переменная str равна "Some string"
+  /// </code>
+  /// </example>
+  /// <param name="index"> Индекс символа </param>
+  /// <returns> Ссылка на символ в строке с индексом index</returns>
+  char& operator[](size_t index);
 
-    /// Оператор []
-    /// <example>
-    /// <code>
-    /// String str = "some string";
-    /// str[0] = 'S'; // теперь переменная str равна "Some string"
-    /// </code>
-    /// </example>
-    /// <param name="index"> Индекс символа </param>
-    /// <returns> Ссылка на символ в строке с индексом index</returns>
-    char& operator[](size_t index);
-    /// Смотри пример
-    /// <example>
-    /// <code>
-    /// String str = "___some string___";
-    /// str.RTrim('_'); // теперь переменная str равна "___some string"
-    /// </code>
-    /// </example>
-    /// <param name="symbol"> Значение символов, которе отрезаем </param>
-    void RTrim(char symbol);
+  /// Смотри пример
+  /// <example>
+  /// <code>
+  /// String str = "___some string___";
+  /// str.RTrim('_'); // теперь переменная str равна "___some string"
+  /// </code>
+  /// </example>
+  /// <param name="symbol"> Значение символов, которе отрезаем </param>
+  void RTrim(char symbol);
 
-    /// Смотри пример
-    /// <example>
-    /// <code>
-    /// String str = "___some string___";
-    /// str.LTrim('_'); // теперь переменная str равна "some string___"
-    /// </code>
-    /// </example>
-    /// <param name="symbol"> Значение символов, которе отрезаем </param>
-    void LTrim(char symbol);
+  /// Смотри пример
+  /// <example>
+  /// <code>
+  /// String str = "___some string___";
+  /// str.LTrim('_'); // теперь переменная str равна "some string___"
+  /// </code>
+  /// </example>
+  /// <param name="symbol"> Значение символов, которе отрезаем </param>
+  void LTrim(char symbol);
 
+  void swap(String& oth);
 
-    void swap(String& oth);
+  friend std::ostream& operator<<(std::ostream&, const String&);
 
-    friend std::ostream& operator<<(std::ostream& out, const String& str);
-
-private:
-    char* m_Data;
+ private:
+  char* Data;
 };
 
 /// Оператор +
@@ -144,7 +140,8 @@ String operator*(const String& a, unsigned int b);
 /// Оператор !=
 bool operator!=(const String& a, const String& b);
 
-/// Оператор &gt;
+bool operator==(const char* data, const String& rhs); /// Оператор &gt;
+
 bool operator>(const String& a, const String& b);
 
 /// Оператор вывода
@@ -152,7 +149,5 @@ bool operator>(const String& a, const String& b);
 /// <param name="str">Строка, которую выводим </param>
 /// <returns>Возвращаем ссылку на поток</returns>
 std::ostream& operator<<(std::ostream& out, const String& str);
-bool operator==(const char*s, const String& d);
-
 
 #endif  // INCLUDE_STRING_HPP_

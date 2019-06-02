@@ -1,5 +1,7 @@
-// Copyright 2019 Fedorov Georgy <james.sayfer2015@yandex.ru>
-
+// Copyright 2018 Your Name <your_email>
+//#ifndef INCLUDE_STRING_HPP_
+//#define INCLUDE_STRING_HPP_
+#include "../include/string.hpp"
 #include "string.hpp"
 
 String::String() {
